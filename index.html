@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+</head>
+<body>
+    <form action="" name="formulario" id="formulario">
+        <input type="text" name="nombre" placeholder="Nombre:">
+
+        <input type="radio" name="sexo" id="Hombre">
+        <label for="hombre">Hombre</label>
+        
+        <input type="radio" name="sexo" id="Mujer">
+        <label for="hombre">Mujer</label>
+        
+        <input type="checkbox" name="terminos" id="terminos">
+        <label for="hombre">Terminos</label>
+        
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        //var formulario = document.getElementsByName('formulario')[0];
+        var formulario = document.getElementById('formulario');
+        var nombre = formulario.nombre;//estamos accediendo al name = nombre
+        var sexo = formulario.sexo;
+        var terminos = formulario.terminos;
+
+        function validar (e) {
+            //validando el nombre
+            if (nombre.value > 18) {
+                alert('maximo de caracteres permitidos');
+            }else if (nombre.value == '') {
+                alert('Por favor ingresa un nombre');
+            }
+            //validando el nombre
+            if (sexo[0].checked == false && sexo[1].checked == false) {
+                alert ('Por favor click en hombre o mujer');
+            }
+            //validando los terminos y condiciones
+            if(!terminos.checked) {
+                alert('Acepta lo terminos y condiciones');
+            }
+            //Evitamos que se envie el formulario
+            e.preventDefault();
+        }
+
+        formulario.addEventListener('submit', validar);
+    </script>
+</body>
+</html>
